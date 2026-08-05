@@ -1,4 +1,4 @@
 transformers
 torch
-streamlit
+streamlit==1.38.0
 numpy
