@@ -21,13 +21,24 @@ with st.spinner("Loading DeBERTa v3 weights..."):
 st.title("MCQ Solver — DeBERTa v3")
 st.write("Enter a question and 5 options. Model will predict top 3 answers.")
 
+# Initialize session state
+for field in ['prompt', 'A', 'B', 'C', 'D', 'E']:
+    if field not in st.session_state:
+        st.session_state[field] = ''
+
+# Clear fields button
+if st.button("Clear Fields"):
+    for field in ['prompt', 'A', 'B', 'C', 'D', 'E']:
+        st.session_state[field] = ''
+    st.rerun()
+    
 with st.form("mcq_form"):
-    prompt = st.text_area("Question / Prompt")
-    A = st.text_input("Option A")
-    B = st.text_input("Option B")
-    C = st.text_input("Option C")
-    D = st.text_input("Option D")
-    E = st.text_input("Option E")
+    prompt = st.text_area("Question / Prompt", value=st.session_state['prompt'])
+    A = st.text_input("Option A", value=st.session_state['A'])
+    B = st.text_input("Option B", value=st.session_state['B'])
+    C = st.text_input("Option C", value=st.session_state['C'])
+    D = st.text_input("Option D", value=st.session_state['D'])
+    E = st.text_input("Option E", value=st.session_state['E'])
     
     submitted = st.form_submit_button("Predict")
 
