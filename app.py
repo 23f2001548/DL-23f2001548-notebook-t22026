@@ -27,18 +27,20 @@ for field in ['prompt', 'A', 'B', 'C', 'D', 'E']:
         st.session_state[field] = ''
 
 # Clear fields button
-if st.button("Clear Fields"):
+
+def clear_fields():
     for field in ['prompt', 'A', 'B', 'C', 'D', 'E']:
         st.session_state[field] = ''
-    st.rerun()
-    
+
+st.button("Clear Fields", on_click=clear_fields)
+
 with st.form("mcq_form"):
-    prompt = st.text_area("Question / Prompt", value=st.session_state['prompt'])
-    A = st.text_input("Option A", value=st.session_state['A'])
-    B = st.text_input("Option B", value=st.session_state['B'])
-    C = st.text_input("Option C", value=st.session_state['C'])
-    D = st.text_input("Option D", value=st.session_state['D'])
-    E = st.text_input("Option E", value=st.session_state['E'])
+    prompt = st.text_area("Question / Prompt", key='prompt')
+    A = st.text_input("Option A", key='A')
+    B = st.text_input("Option B", key='B')
+    C = st.text_input("Option C", key='C')
+    D = st.text_input("Option D", key='D')
+    E = st.text_input("Option E", key='E')
     
     submitted = st.form_submit_button("Predict")
 
