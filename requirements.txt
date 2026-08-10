@@ -3,3 +3,6 @@ transformers==4.44.2
 torch==2.3.0
 numpy==1.26.4
 pillow==10.3.0
+tokenizers==0.19.1
+accelerate==0.34.2
+huggingface_hub
